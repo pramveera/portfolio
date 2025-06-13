@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - Experience & Leadership</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f0f2f5;
+      color: #2e2e2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .section-container {
+      max-width: 1100px;
+      width: 100%;
+      height: 90vh;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      padding: 30px 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 30px;
+      letter-spacing: 1.2px;
+      user-select: none;
+    }
+
+    .columns {
+      display: flex;
+      gap: 40px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* Scrollable columns */
+    .column {
+      flex: 1;
+      background: #fafafa;
+      border-radius: 12px;
+      box-shadow: inset 0 0 12px #ddd;
+      padding: 20px 25px;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: #6c63ff transparent;
+    }
+    .column::-webkit-scrollbar {
+      width: 8px;
+    }
+    .column::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .column::-webkit-scrollbar-thumb {
+      background-color: #6c63ff;
+      border-radius: 20px;
+    }
+
+    /* Column Headers */
+    .column-header {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: #6c63ff;
+      border-bottom: 3px solid #6c63ff;
+      padding-bottom: 8px;
+      user-select: none;
+    }
+
+    /* Timeline container */
+    ul.timeline {
+      list-style: none;
+      padding-left: 20px;
+      margin: 0;
+      position: relative;
+    }
+    ul.timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10px;
+      width: 3px;
+      height: 100%;
+      background: #6c63ff;
+      border-radius: 4px;
+    }
+
+    ul.timeline li {
+      position: relative;
+      margin-bottom: 30px;
+      padding-left: 30px;
+      cursor: default;
+    }
+    ul.timeline li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Timeline dots */
+    ul.timeline li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      background: #6c63ff;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 5px rgba(108, 99, 255, 0.7);
+      transition: background-color 0.3s ease;
+    }
+
+    ul.timeline li:hover::before {
+      background-color: #4a43d8;
+      box-shadow: 0 0 10px rgba(74, 67, 216, 0.9);
+    }
+
+    /* Role Title */
+    .role-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      color: #333;
+      user-select: text;
+    }
+
+    /* Tags container */
+    .tags {
+      margin-bottom: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Tags */
+    .tag {
+      background: #6c63ff;
+      color: white;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      user-select: none;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .tag:hover {
+      background-color: #4a43d8;
+    }
+
+    /* Description */
+    .description {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.4;
+      user-select: text;
+      white-space: pre-line;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .columns {
+        flex-direction: column;
+      }
+      .column {
+        height: 45vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="section-container" aria-label="Experience and Leadership Roles section">
+    <h2 class="section-title">Experience &amp; Leadership Roles</h2>
+    <div class="columns">
+      <!-- Experience Column -->
+      <div class="column" role="region" aria-labelledby="experience-header" tabindex="0">
+        <h3 id="experience-header" class="column-header">Experience</h3>
+        <ul class="timeline" aria-live="polite">
+          <li>
+            <div class="role-title">Web Developer Intern</div>
+            <div class="tags">
+              <span class="tag">Codshoft</span>
+              <span class="tag">Sept 2024 - Dec 2024</span>
+            </div>
+            <p class="description">Worked on real-world projects using HTML, CSS, JS & API integration.</p>
+          </li>
+          <li>
+            <div class="role-title">Social Media Manager</div>
+            <div class="tags">
+              <span class="tag">Nayavayapar Startup</span>
+              <span class="tag">Apr 2025 - Present</span>
+            </div>
+            <p class="description">Handling content strategy, branding & social media growth on all platforms.</p>
+          </li>
+          <li>
+            <div class="role-title">Freelance Graphic Designer</div>
+            <div class="tags">
+              <span class="tag">Self-Employed</span>
+              <span class="tag">Jan 2023 - Present</span>
+            </div>
+            <p class="description">Created digital graphics and branding materials for various clients.</p>
+          </li>
+          <li>
+            <div class="role-title">Content Writer</div>
+            <div class="tags">
+              <span class="tag">TechBlog</span>
+              <span class="tag">Jun 2022 - Dec 2022</span>
+            </div>
+            <p class="description">Produced technical articles and tutorials on web development topics.</p>
+          </li>
+          <li>
+            <div class="role-title">Intern - Production & Operations</div>
+            <div class="tags">
+              <span class="tag">Nayavayapar</span>
+              <span class="tag">Apr 2025 - Present</span>
+            </div>
+            <p class="description">Streamlined processing & packaging of Makhana, and supported production scalability initiatives.</p>
+          </li>
+          <li>
+            <div class="role-title">Web Development & Branding Lead</div>
+            <div class="tags">
+              <span class="tag">Nayavayapar</span>
+              <span class="tag">May 2025 - Present</span>
+            </div>
+            <p class="description">Handling company website and product branding with front-end and visual content efforts.</p>
+          </li>
+          <li>
+            <div class="role-title">Startup Intern</div>
+            <div class="tags">
+              <span class="tag">DailyLive Pvt. Ltd.</span>
+              <span class="tag">Aug 2024</span>
+            </div>
+            <p class="description">Got startup insights from Mayank Vats Sir, assisted in online operations and market research tasks.</p>
+          </li>
+          <li>
+            <div class="role-title">Campus Ambassador</div>
+            <div class="tags">
+              <span class="tag">IIT Bombay Techfest</span>
+              <span class="tag">Oct 2024 - Jan 2025</span>
+            </div>
+            <p class="description">Promoted Techfest, built campus community, and coordinated events for outreach.</p>
+          </li>
+          <li>
+            <div class="role-title">Intern</div>
+            <div class="tags">
+              <span class="tag">CIMP Bootcamp</span>
+              <span class="tag">Feb 2025</span>
+            </div>
+            <p class="description">Participated in Day 2 of IDE Bootcamp held at CIMP Patna.</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Leadership Column -->
+      <div class="column" role="region" aria-labelledby="leadership-header" tabindex="0">
+        <h3 id="leadership-header" class="column-header">Leadership Roles</h3>
+        <ul class="timeline" aria-live="polite">
+          <li>
+            <div class="role-title">Class Representative (CR)</div>
+            <div class="tags">
+              <span class="tag">CSE-AI, SCE Supaul</span>
+              <span class="tag">2023 - Present</span>
+            </div>
+            <p class="description">Bridging students and faculty, organizing academic events and mentoring peers.</p>
+          </li>
+          <li>
+            <div class="role-title">Club Treasurer</div>
+            <div class="tags">
+              <span class="tag">NSS & Technical Club</span>
+              <span class="tag">2024</span>
+            </div>
+            <p class="description">Managed events, handled budgets, and helped host NSS Day & TecXposium24.</p>
+          </li>
+          <li>
+            <div class="role-title">Event Coordinator</div>
+            <div class="tags">
+              <span class="tag">Startup Cell</span>
+              <span class="tag">2024</span>
+            </div>
+            <p class="description">Organized startup workshops and networking events for students.</p>
+          </li>
+          <li>
+            <div class="role-title">Volunteer Head</div>
+            <div class="tags">
+              <span class="tag">Environment Club</span>
+              <span class="tag">2023 - 2024</span>
+            </div>
+            <p class="description">Led tree plantation drives and environmental awareness programs.</p>
+          </li>
+          <li>
+            <div class="role-title">Hackathon Winner</div>
+            <div class="tags">
+              <span class="tag">TecXposium24</span>
+              <span class="tag">Sept 2024</span>
+            </div>
+            <p class="description">Won 1st prize for Smart Watering System project in Smart Automation Hackathon.</p>
+          </li>
+          <li>
+            <div class="role-title">Drama Script Writer & Performer</div>
+            <div class="tags">
+              <span class="tag">Startup Awareness Street Play</span>
+              <span class="tag">Oct 2024</span>
+            </div>
+            <p class="description">Created and performed an engaging Nukad Natak promoting Bihar Startup Policy.</p>
+          </li>
+          <li>
+            <div class="role-title">Tree Plantation Volunteer</div>
+            <div class="tags">
+              <span class="tag">With Forest Department</span>
+              <span class="tag">Sept 2024</span>
+            </div>
+            <p class="description">Volunteered in green drive organized by Forest Dept with NSS Team and SCE Faculty.</p>
+          </li>
+          <li>
+            <div class="role-title">Event Host</div>
+            <div class="tags">
+              <span class="tag">Gandhi Jayanti</span>
+              <span class="tag">Oct 2024</span>
+            </div>
+            <p class="description">Hosted cultural and cleanliness events celebrating Gandhi & Shastri Jayanti.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

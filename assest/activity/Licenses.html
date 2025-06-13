@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio | Licenses & Certifications</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    section#certifications {
+      padding: 50px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section#certifications h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2c3e50;
+    }
+
+    .cert-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .cert-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid transparent;
+      overflow: hidden;
+    }
+
+    .cert-card:nth-child(even) {
+      background-color: #e8f0fe;
+    }
+
+    .cert-card:nth-child(odd) {
+      background-color: #ffffff;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+      border-color: #007bff;
+    }
+
+    .cert-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .cert-card h3 {
+      font-size: 1.3rem;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .cert-card p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+    }
+
+    .cert-card a {
+      margin-top: 10px;
+      display: inline-block;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .cert-card a:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+
+    .view-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 10px 25px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .view-btn:hover {
+      background: #0056b3;
+    }
+
+    @media screen and (max-width: 600px) {
+      .cert-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section id="certifications">
+    <h2>Licenses & Certifications</h2>
+    <div class="cert-container" id="certContainer"></div>
+    <button class="view-btn" onclick="toggleView()" id="viewBtn">View All</button>
+  </section>
+
+  <script>
+    const certifications = [
+      {
+        title: "Web Development Bootcamp",
+        issuer: "Udemy",
+        date: "Jan 2024",
+        link: "https://example.com/certificate1",
+        image: "https://i.ibb.co/pbhsQL8/Certificate1.png"
+      },
+      {
+        title: "AI for Everyone",
+        issuer: "Coursera",
+        date: "Aug 2023",
+        link: "https://example.com/certificate2",
+        image: "https://i.ibb.co/f1t6qJt/Certificate2.png"
+      },
+      {
+        title: "Python for Data Science",
+        issuer: "edX",
+        date: "May 2023",
+        link: "https://example.com/certificate3",
+        image: "https://i.ibb.co/KxjbXkP/Certificate3.png"
+      },
+      {
+        title: "Introduction to Machine Learning",
+        issuer: "Google",
+        date: "Feb 2024",
+        link: "https://example.com/certificate4",
+        image: "https://i.ibb.co/7R6mh7f/Certificate4.png"
+      },
+      {
+        title: "Startup India Learning Program",
+        issuer: "Startup India",
+        date: "Feb 2024",
+        link: "https://certificate.startupindia.gov.in/view-certificate?name=paramveer-kumar&id=17dafe17-f8a4-4b77-a6f0-346a8f57cf45",
+        image: "https://i.ibb.co/q7xk0ss/Startup-India.png"
+      },
+      {
+        title: "IDE Bootcamp 2024",
+        issuer: "CIMP Patna",
+        date: "Feb 2024",
+        link: "https://drive.google.com/file/d/1ZsnWkzyZfsfdHu_PZZE7WZQgxMjfq-4h/view?usp=sharing",
+        image: "https://i.ibb.co/tzVrsrH/IDE-Bootcamp.png"
+      },
+      {
+        title: "Startup Yatra Bihar",
+        issuer: "Startup Bihar",
+        date: "Aug 2024",
+        link: "https://drive.google.com/file/d/1x9KqNVwR_J_2QHOSrIsg1yEZKz3L8fl2/view?usp=sharing",
+        image: "https://i.ibb.co/9pLTjvb/Startup-Yatra.png"
+      },
+      {
+        title: "Smart Automation Winner - TecXposium24",
+        issuer: "SCE Supaul",
+        date: "Sep 2024",
+        link: "https://drive.google.com/file/d/1urEWaJ-Bpckf1t9GTo_yXg09KhkVPV3G/view?usp=sharing",
+        image: "https://i.ibb.co/SQRhRWm/Smart-Automation.png"
+      },
+      {
+        title: "Tree Plantation Volunteer",
+        issuer: "Environment & Forest Dept.",
+        date: "Sep 2024",
+        link: "https://drive.google.com/file/d/1rIM5Evd9HZEMcGgzp-ZzV0dnlOG4Zd3V/view?usp=sharing",
+        image: "https://i.ibb.co/pwKDX2M/Tree-Plantation.png"
+      },
+      {
+        title: "Swachh Bharat Volunteer - 2nd October",
+        issuer: "SCE Supaul",
+        date: "Oct 2024",
+        link: "https://drive.google.com/file/d/1umCViUFk0e1C9vjT0MLiO6eb6UsOQMQP/view?usp=sharing",
+        image: "https://i.ibb.co/MRDfj5X/Swachh-Bharat.png"
+      },
+      {
+        title: "Codshoft Internship Offer Letter",
+        issuer: "Codshoft",
+        date: "Sep 2024",
+        link: "https://drive.google.com/file/d/1KZhE9S2ctmgG2ELzYF_cUXLFNV80ErT7/view?usp=sharing",
+        image: "https://i.ibb.co/WxG9GRd/Codshoft-Internship.png"
+      },
+      {
+        title: "Inter College Startup Competition - Runner Up",
+        issuer: "Startup Cell Supaul & IIC",
+        date: "Aug 2024",
+        link: "https://drive.google.com/file/d/1zVSTwZmeZVaPdnOv7c1NTYZ_dH43yyL6/view?usp=sharing",
+        image: "https://i.ibb.co/qYCd08H/Startup-Competition.png"
+      },
+      {
+        title: "Makhana Business Internship Certificate",
+        issuer: "Nayavayapar",
+        date: "May 2025",
+        link: "https://drive.google.com/file/d/1fAyUezB08iM4SBMpSy8ci-ZA8RXGx26e/view?usp=sharing",
+        image: "https://i.ibb.co/v1Kympf/Makhana-Internship.png"
+      }
+    ];
+
+    const container = document.getElementById("certContainer");
+
+    function renderCertifications(limit = certifications.length) {
+      container.innerHTML = "";
+      certifications.slice(0, limit).forEach(cert => {
+        const card = document.createElement("div");
+        card.className = "cert-card";
+        card.innerHTML = `
+          <img src="${cert.image}" alt="${cert.title} image">
+          <h3>${cert.title}</h3>
+          <p><strong>Issuer:</strong> ${cert.issuer}</p>
+          <p><strong>Date:</strong> ${cert.date}</p>
+          <a href="${cert.link}" target="_blank">View Certificate</a>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    let showAll = false;
+    function toggleView() {
+      showAll = !showAll;
+      renderCertifications(showAll ? certifications.length : 6);
+      document.getElementById("viewBtn").innerText = showAll ? "Show Less" : "View All";
+    }
+
+    renderCertifications(6);
+  </script>
+
+</body>
+</html>

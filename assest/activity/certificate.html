@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pramveer's Certificate Showcase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0056b3, #007bff);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .main {
+      padding: 20px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      background-color: #eef6ff;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .filter-bar h2 {
+      font-size: 1.2rem;
+      color: #0056b3;
+    }
+
+    .filter-bar select {
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .org-badge {
+      display: inline-block;
+      background: #e0f0ff;
+      color: #007bff;
+      padding: 5px 12px;
+      font-size: 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      margin: 10px 0 15px;
+      color: #555;
+      min-height: 60px;
+    }
+
+    .card-content a {
+      display: inline-block;
+      padding: 10px 15px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .card-content a:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #eee;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pramveer's Certificates</h1>
+    <p>B.Tech CSE-AI | Supaul College of Engineering</p>
+  </header>
+
+  <div class="main">
+    <!-- Filter Section -->
+    <div class="filter-bar">
+      <h2>Filter by:</h2>
+      <select id="filterType">
+        <option value="all">All</option>
+        <option value="internship">Internship</option>
+        <option value="competition">Competition</option>
+        <option value="workshop">Workshop</option>
+        <option value="bootcamp">Bootcamp</option>
+        <option value="certification">Certification</option>
+      </select>
+    </div>
+
+    <section class="gallery">
+      <!-- Certificate Cards -->
+      <div class="card" data-type="internship">
+        <img src="certificates/cert1.png" alt="Web Dev Certificate">
+        <div class="card-content">
+          <h3>Web Development Internship</h3>
+          <span class="org-badge">Codshoft Pvt. Ltd.</span>
+          <p>Successfully completed a 1-month internship on frontend development using HTML, CSS, JavaScript, and React.</p>
+          <a href="certificates/cert1.pdf" target="_blank">View Certificate</a>
+        </div>
+      </div>
+
+      <div class="card" data-type="competition">
+        <img src="certificates/cert2.png" alt="Startup Award">
+        <div class="card-content">
+          <h3>Startup Competition - Runner Up</h3>
+          <span class="org-badge">Startup Cell, SCE Supaul</span>
+          <p>Secured runner-up position for the project 'NayaVyapar' in the inter-college startup competition at SCE Supaul.</p>
+          <a href="certificates/cert2.pdf" target="_blank">View Certificate</a>
+        </div>
+      </div>
+
+      <div class="card" data-type="bootcamp">
+        <img src="certificates/cert3.png" alt="IDE Bootcamp Certificate">
+        <div class="card-content">
+          <h3>IDE Bootcamp Participant</h3>
+          <span class="org-badge">CIMP Patna</span>
+          <p>Participated in the 3-day IDE Bootcamp focused on startup ideation, innovation, and entrepreneurial development.</p>
+          <a href="certificates/cert3.pdf" target="_blank">View Certificate</a>
+        </div>
+      </div>
+
+      <div class="card" data-type="certification">
+        <img src="certificates/cert4.png" alt="AWS Cloud Foundation">
+        <div class="card-content">
+          <h3>AWS Cloud Foundation</h3>
+          <span class="org-badge">ICT Academy</span>
+          <p>Completed AWS Cloud Foundation program including cloud concepts, core AWS services, and security.</p>
+          <a href="certificates/cert4.pdf" target="_blank">View Certificate</a>
+        </div>
+      </div>
+
+      <div class="card" data-type="certification">
+        <img src="certificates/cert5.png" alt="Digital Marketing">
+        <div class="card-content">
+          <h3>Digital Marketing Certificate</h3>
+          <span class="org-badge">Learnyst</span>
+          <p>Certified in digital marketing covering content creation, social media strategies, SEO, and ad campaigns.</p>
+          <a href="certificates/cert5.pdf" target="_blank">View Certificate</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Pramveer | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const filterDropdown = document.getElementById('filterType');
+    const cards = document.querySelectorAll('.card');
+
+    filterDropdown.addEventListener('change', function () {
+      const selected = this.value;
+      cards.forEach(card => {
+        const type = card.getAttribute('data-type');
+        if (selected === 'all' || selected === type) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
