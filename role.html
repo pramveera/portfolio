@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio - Experience & Leadership</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+      color: #333;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 10px;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #111;
+      flex: 0 0 auto;
+    }
+
+    .dual-columns {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      justify-content: space-between;
+      flex: 1 1 auto;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: transparent transparent;
+    }
+
+    .dual-columns::-webkit-scrollbar {
+      height: 6px;
+    }
+    .dual-columns::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+    .dual-columns::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .left-column, .right-column {
+      flex: 1 1 45%;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .sub-title {
+      font-size: 1.2rem;
+      color: #4CAF50;
+      padding: 15px 20px;
+      border-bottom: 2px solid #4CAF50;
+      background-color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    .scroll-content {
+      overflow-y: auto;
+      padding: 0 20px 15px;
+      scroll-behavior: smooth;
+    }
+
+    .scroll-content::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .scroll-content::-webkit-scrollbar-thumb {
+      background-color: #4caf50;
+      border-radius: 20px;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 16px;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 16px;
+    }
+
+    .role-title {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 0.95rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 16px;
+      padding: 3px 10px;
+      font-size: 0.75rem;
+      margin-right: 6px;
+    }
+
+    li span.description {
+      display: block;
+      margin-top: 4px;
+      margin-left: 10px;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .dual-columns {
+        flex-direction: column;
+        overflow-x: hidden;
+      }
+
+      .left-column, .right-column {
+        max-height: 45vh;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="section-container">
+    <h2 class="section-title">Experience & Leadership Roles</h2>
+    <div class="dual-columns">
+
+      <!-- Experience Card -->
+      <div class="left-column">
+        <div class="card">
+          <div class="sub-title">Experience</div>
+          <div class="scroll-content">
+            <ul>
+              <!-- Experience list items -->
+              <li><div class="role-title">Web Developer Intern</div><span class="tag">Codshoft</span><span class="tag">Sept 2024 - Dec 2024</span><span class="description">Worked on real-world projects using HTML, CSS, JS & API integration.</span></li>
+              <li><div class="role-title">Social Media Manager</div><span class="tag">Nayavayapar Startup</span><span class="tag">Apr 2025 - Present</span><span class="description">Handling content strategy, branding & social media growth on all platforms.</span></li>
+              <li><div class="role-title">Freelance Graphic Designer</div><span class="tag">Self-Employed</span><span class="tag">Jan 2023 - Present</span><span class="description">Created digital graphics and branding materials for various clients.</span></li>
+              <li><div class="role-title">Content Writer</div><span class="tag">TechBlog</span><span class="tag">Jun 2022 - Dec 2022</span><span class="description">Produced technical articles and tutorials on web development topics.</span></li>
+              <li><div class="role-title">Intern - Production & Operations</div><span class="tag">Nayavayapar</span><span class="tag">Apr 2025 - Present</span><span class="description">Streamlined processing & packaging of Makhana, and supported production scalability initiatives.</span></li>
+              <li><div class="role-title">Web Development & Branding Lead</div><span class="tag">Nayavayapar</span><span class="tag">May 2025 - Present</span><span class="description">Handling company website and product branding with front-end and visual content efforts.</span></li>
+              <li><div class="role-title">Startup Intern</div><span class="tag">DailyLive Pvt. Ltd.</span><span class="tag">Aug 2024</span><span class="description">Got startup insights from Mayank Vats Sir, assisted in online operations and market research tasks.</span></li>
+              <li><div class="role-title">Campus Ambassador</div><span class="tag">IIT Bombay Techfest</span><span class="tag">Oct 2024 - Jan 2025</span><span class="description">Promoted Techfest, built campus community, and coordinated events for outreach.</span></li>
+              <li><div class="role-title">Intern</div><span class="tag">CIMP Bootcamp</span><span class="tag">Feb 2025</span><span class="description">Participated in Day 2 of IDE Bootcamp held at CIMP Patna.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Leadership Card -->
+      <div class="right-column">
+        <div class="card">
+          <div class="sub-title">Leadership Roles</div>
+          <div class="scroll-content">
+            <ul>
+              <!-- Leadership list items -->
+              <li><div class="role-title">Class Representative (CR)</div><span class="tag">CSE-AI, SCE Supaul</span><span class="tag">2023 - Present</span><span class="description">Bridging students and faculty, organizing academic events and mentoring peers.</span></li>
+              <li><div class="role-title">Club Treasurer</div><span class="tag">NSS & Technical Club</span><span class="tag">2024</span><span class="description">Managed events, handled budgets, and helped host NSS Day & TecXposium24.</span></li>
+              <li><div class="role-title">Event Coordinator</div><span class="tag">Startup Cell</span><span class="tag">2024</span><span class="description">Organized startup workshops and networking events for students.</span></li>
+              <li><div class="role-title">Volunteer Head</div><span class="tag">Environment Club</span><span class="tag">2023 - 2024</span><span class="description">Led tree plantation drives and environmental awareness programs.</span></li>
+              <li><div class="role-title">Hackathon Winner</div><span class="tag">TecXposium24</span><span class="tag">Sept 2024</span><span class="description">Won 1st prize for Smart Watering System project in Smart Automation Hackathon.</span></li>
+              <li><div class="role-title">Drama Script Writer & Performer</div><span class="tag">Startup Awareness Street Play</span><span class="tag">Oct 2024</span><span class="description">Created and performed an engaging Nukad Natak promoting Bihar Startup Policy.</span></li>
+              <li><div class="role-title">Tree Plantation Volunteer</div><span class="tag">With Forest Department</span><span class="tag">Sept 2024</span><span class="description">Volunteered in green drive organized by Forest Dept with NSS Team and SCE Faculty.</span></li>
+              <li><div class="role-title">Event Host</div><span class="tag">Gandhi Jayanti</span><span class="tag">Oct 2024</span><span class="description">Anchored cultural and awareness programs including Swachh Bharat & painting contest.</span></li>
+              <li><div class="role-title">Startup Competition Runner-Up</div><span class="tag">SCE Supaul</span><span class="tag">Aug 2024</span><span class="description">Secured 2nd place with team in inter-college startup event organized by Startup Cell & IIC.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
