@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphic Designing Showcase | Pramveer</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #c3ecf7 0%, #fcd5ce 100%);
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+      color: #05555c;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      align-self: flex-start;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(5, 85, 92, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #05555c;
+      color: white;
+      transform: translateX(-3px);
+      box-shadow: 0 6px 20px rgba(5, 85, 92, 0.15);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      color: #5f7478;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Filters Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 45px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 24px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #64748b;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: #05555c;
+    }
+
+    .filter-btn.active {
+      background: #05555c;
+      color: white;
+      border-color: #05555c;
+      box-shadow: 0 4px 15px rgba(5, 85, 92, 0.15);
+    }
+
+    /* Portfolio Cards Grid */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    /* Behance style premium visual card */
+    .showcase-card {
+      position: relative;
+      height: 400px;
+      background: #e2e8f0;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(5, 85, 92, 0.05);
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(5, 85, 92, 0.12);
+    }
+
+    .card-bg-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .showcase-card:hover .card-bg-img {
+      transform: scale(1.06);
+    }
+
+    /* Top Badges overlay */
+    .card-badge-row {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 5;
+    }
+
+    .category-badge {
+      padding: 6px 14px;
+      background: rgba(5, 85, 92, 0.9);
+      backdrop-filter: blur(5px);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-radius: 20px;
+    }
+
+    .zoom-hint {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.9);
+      color: #05555c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 0.95rem;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .showcase-card:hover .zoom-hint {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Floating card info footer */
+    .card-glass-footer {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 18px;
+      z-index: 5;
+      transition: all 0.3s ease;
+      transform: translateY(10px);
+      opacity: 0.95;
+    }
+
+    .showcase-card:hover .card-glass-footer {
+      transform: translateY(0);
+      opacity: 1;
+      background: white;
+    }
+
+    .card-glass-footer h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    /* Tools tag list */
+    .tools-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .tool-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      background: rgba(5, 85, 92, 0.08);
+      color: #05555c;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .card-glass-footer p {
+      font-size: 0.85rem;
+      color: #5f7478;
+      line-height: 1.4;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-out;
+    }
+
+    .showcase-card:hover .card-glass-footer p {
+      max-height: 80px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+
+    /* Case Study Overlay Lightbox */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+
+    .lightbox.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-content {
+      max-width: 950px;
+      width: 100%;
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+    }
+
+    .lightbox.show .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 2.2rem;
+      color: white;
+      cursor: pointer;
+      z-index: 110;
+      transition: transform 0.2s;
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.1);
+    }
+
+    .lightbox-img-pane {
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 520px;
+    }
+
+    .lightbox-img-pane img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lightbox-info-pane {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: auto;
+      max-height: 520px;
+    }
+
+    .lightbox-info-pane h3 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 15px;
+    }
+
+    .lightbox-details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 15px;
+    }
+
+    .detail-item h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+
+    .detail-item p {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .lightbox-desc-block h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #94a3b8;
+      margin-bottom: 8px;
+    }
+
+    .lightbox-desc-block p {
+      font-size: 0.95rem;
+      color: #5f7478;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      margin-top: auto;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: #5f7478;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .lightbox-content {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .lightbox-img-pane {
+        height: 300px;
+      }
+      .lightbox-info-pane {
+        padding: 30px;
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation button back to root portfolio -->
+  <a href="../../index_responsive.html#act" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+  </a>
+
+  <div class="container">
+    <header>
+      <h1>Graphic Design Portfolio</h1>
+      <p>Visual branding, high-fidelity UI/UX layouts, and event marketing collateral designed to blend structure, aesthetics, and impact. Click on any design to read the Case Study.</p>
+    </header>
+
+    <!-- Filters Row -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Visuals</button>
+      <button class="filter-btn" data-filter="branding">Branding & Identity</button>
+      <button class="filter-btn" data-filter="uiux">UI/UX Layouts</button>
+      <button class="filter-btn" data-filter="marketing">Posters & Marketing</button>
+    </div>
+
+    <!-- Showcase Grid -->
+    <div class="showcase-grid" id="showcase-grid">
+      
+      <!-- Card 1: Nayavayapar Packaging -->
+      <div class="showcase-card" data-category="branding"
+           data-title="Nayavayapar Brand Packaging"
+           data-client="Nayavayapar Rural Startup"
+           data-date="Oct 2024"
+           data-tools="Adobe Photoshop, Illustrator"
+           data-desc="Crafted the core visual package graphics, product label dimensions, and color schemes for Makhana distribution. Designed to bridge rustic local roots with clean corporate branding to secure consumer trust.">
+        <div class="card-badge-row">
+          <span class="category-badge">Branding</span>
+          <span class="zoom-hint"><i class="fa-solid fa-expand"></i></span>
+        </div>
+        <img class="card-bg-img" src="https://images.unsplash.com/photo-1532634922-8fe0b757fb13?auto=format&fit=crop&w=600&q=80" alt="Nayavayapar Packaging">
+        <div class="card-glass-footer">
+          <div class="tools-row">
+            <span class="tool-tag">Photoshop</span>
+            <span class="tool-tag">Illustrator</span>
+          </div>
+          <h3>Nayavayapar Product Packaging</h3>
+          <p>Click to open the design Case Study and inspect layout goals, branding values, and assets.</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Glassmorphic Portfolio UI -->
+      <div class="showcase-card" data-category="uiux"
+           data-title="Glassmorphic Portfolio Layout"
+           data-client="Personal Project"
+           data-date="Jan 2025"
+           data-tools="Figma, Vector Assets"
+           data-desc="Designed and mapped out high-fidelity visual layouts for the portfolio website. Implemented signature soft blue-pink HSL gradients, frosted glass panels (glassmorphism), and mobile-responsive widget parameters.">
+        <div class="card-badge-row">
+          <span class="category-badge">UI/UX</span>
+          <span class="zoom-hint"><i class="fa-solid fa-expand"></i></span>
+        </div>
+        <img class="card-bg-img" src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=600&q=80" alt="Portfolio Web Mockup">
+        <div class="card-glass-footer">
+          <div class="tools-row">
+            <span class="tool-tag">Figma</span>
+            <span class="tool-tag">UI Design</span>
+          </div>
+          <h3>Glassmorphic Portfolio UI</h3>
+          <p>Click to open the design Case Study and inspect layout goals, branding values, and assets.</p>
+        </div>
+      </div>
+
+      <!-- Card 3: TechFest Event Banner -->
+      <div class="showcase-card" data-category="marketing"
+           data-title="TecXposium24 Marketing Kit"
+           data-client="SCE Supaul Tech Cell"
+           data-date="Nov 2024"
+           data-tools="Canva, Adobe Photoshop"
+           data-desc="Designed the central banners, booklet covers, certificates, and social advertising posts for the annual college TechFest TecXposium24. Formulated a bold neon-cyber layout style that increased attendance by 40%.">
+        <div class="card-badge-row">
+          <span class="category-badge">Marketing</span>
+          <span class="zoom-hint"><i class="fa-solid fa-expand"></i></span>
+        </div>
+        <img class="card-bg-img" src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?auto=format&fit=crop&w=600&q=80" alt="TechFest Banner">
+        <div class="card-glass-footer">
+          <div class="tools-row">
+            <span class="tool-tag">Photoshop</span>
+            <span class="tool-tag">Marketing</span>
+          </div>
+          <h3>TecXposium24 Event Banner</h3>
+          <p>Click to open the design Case Study and inspect layout goals, branding values, and assets.</p>
+        </div>
+      </div>
+
+      <!-- Card 4: NSS Club Conservation Campaign -->
+      <div class="showcase-card" data-category="marketing"
+           data-title="NSS Conservation Advertisements"
+           data-client="NSS SCE Club"
+           data-date="Aug 2024"
+           data-tools="Adobe Illustrator, Canva"
+           data-desc="Created a series of 5 environmental awareness slide carousels covering tree plantation benefits, plastic reduction, and clean water guidelines. Emphasized clean flat graphics and high-impact visual taglines.">
+        <div class="card-badge-row">
+          <span class="category-badge">Marketing</span>
+          <span class="zoom-hint"><i class="fa-solid fa-expand"></i></span>
+        </div>
+        <img class="card-bg-img" src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="NSS Environmental Campaign">
+        <div class="card-glass-footer">
+          <div class="tools-row">
+            <span class="tool-tag">Illustrator</span>
+            <span class="tool-tag">Campaign</span>
+          </div>
+          <h3>NSS Environmental Graphics</h3>
+          <p>Click to open the design Case Study and inspect layout goals, branding values, and assets.</p>
+        </div>
+      </div>
+
+      <!-- Card 5: Smart Automation App UI -->
+      <div class="showcase-card" data-category="uiux"
+           data-title="Smart Watering System Dashboard"
+           data-client="IoT Project Dashboard"
+           data-date="Dec 2024"
+           data-tools="Figma, Prototype Mockups"
+           data-desc="Crafted a clean and minimal mobile monitoring application layout. Displays graphical moisture percentages, temperature curves, and toggles to control irrigation values from any location.">
+        <div class="card-badge-row">
+          <span class="category-badge">UI/UX</span>
+          <span class="zoom-hint"><i class="fa-solid fa-expand"></i></span>
+        </div>
+        <img class="card-bg-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Smart Automation App UI">
+        <div class="card-glass-footer">
+          <div class="tools-row">
+            <span class="tool-tag">Figma</span>
+            <span class="tool-tag">IoT UX</span>
+          </div>
+          <h3>Smart Irrigation App Interface</h3>
+          <p>Click to open the design Case Study and inspect layout goals, branding values, and assets.</p>
+        </div>
+      </div>
+
+      <!-- Card 6: Freelancing Startup Brand Kit -->
+      <div class="showcase-card" data-category="branding"
+           data-title="Freelancing Agency Identity"
+           data-client="Agency Co-Founder Kit"
+           data-date="Jul 2024"
+           data-tools="Adobe Illustrator, Photoshop"
+           data-desc="Assembled the visual brand identity packet for a freelance services agency. Designed custom vector logos, business stationery layouts, letterheads, and social media brand templates.">
+        <div class="card-badge-row">
+          <span class="category-badge">Branding</span>
+          <span class="zoom-hint"><i class="fa-solid fa-expand"></i></span>
+        </div>
+        <img class="card-bg-img" src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80" alt="Freelance Agency Brand kit">
+        <div class="card-glass-footer">
+          <div class="tools-row">
+            <span class="tool-tag">Illustrator</span>
+            <span class="tool-tag">Identity</span>
+          </div>
+          <h3>Agency Visual Brand Kit</h3>
+          <p>Click to open the design Case Study and inspect layout goals, branding values, and assets.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Case Study Lightbox Modal -->
+  <div class="lightbox-close" id="lightboxClose" style="display: none;">&times;</div>
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <div class="lightbox-img-pane">
+        <img src="" id="lightboxImg" alt="Showcase Art">
+      </div>
+      <div class="lightbox-info-pane">
+        <h3 id="lightboxTitle">Project Title</h3>
+        
+        <div class="lightbox-details-grid">
+          <div class="detail-item">
+            <h4>Client / Project</h4>
+            <p id="lightboxClient">Client Name</p>
+          </div>
+          <div class="detail-item">
+            <h4>Release Date</h4>
+            <p id="lightboxDate">Jan 2025</p>
+          </div>
+          <div class="detail-item" style="grid-column: span 2;">
+            <h4>Design Tools Used</h4>
+            <p id="lightboxTools">Tools list</p>
+          </div>
+        </div>
+
+        <div class="lightbox-desc-block">
+          <h4>Design Summary & Process</h4>
+          <p id="lightboxDesc">Detailed explanation of the visual strategy, research constraints, and vector goals accomplished.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Pramveer Kumar | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.showcase-card');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      
+      const lightbox = document.getElementById('lightbox');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxClient = document.getElementById('lightboxClient');
+      const lightboxDate = document.getElementById('lightboxDate');
+      const lightboxTools = document.getElementById('lightboxTools');
+      const lightboxDesc = document.getElementById('lightboxDesc');
+
+      // 1. Grid Filtering logic
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filterValue = btn.getAttribute('data-filter');
+          cards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filterValue === 'all' || filterValue === category) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 2. Case Study Lightbox Zoom logic
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          const title = card.getAttribute('data-title');
+          const client = card.getAttribute('data-client');
+          const date = card.getAttribute('data-date');
+          const tools = card.getAttribute('data-tools');
+          const desc = card.getAttribute('data-desc');
+          const imgSrc = card.querySelector('.card-bg-img').src;
+
+          lightboxImg.src = imgSrc;
+          lightboxTitle.textContent = title;
+          lightboxClient.textContent = client;
+          lightboxDate.textContent = date;
+          lightboxTools.textContent = tools;
+          lightboxDesc.textContent = desc;
+
+          lightbox.classList.add('show');
+          lightboxClose.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove('show');
+        lightboxClose.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

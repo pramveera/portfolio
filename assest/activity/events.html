@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events & Awards Scrapbook | Pramveer</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #c3ecf7 0%, #fcd5ce 100%);
+      color: #334155;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+      color: #05555c;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      align-self: flex-start;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(5, 85, 92, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #05555c;
+      color: white;
+      transform: translateX(-3px);
+      box-shadow: 0 6px 20px rgba(5, 85, 92, 0.15);
+    }
+
+    /* Showcase Layout */
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      color: #5f7478;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Filters Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 22px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #64748b;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: #05555c;
+    }
+
+    .filter-btn.active {
+      background: #05555c;
+      color: white;
+      border-color: #05555c;
+      box-shadow: 0 4px 15px rgba(5, 85, 92, 0.15);
+    }
+
+    /* Polaroid Scrapbook Board */
+    .scrapbook-board {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 60px;
+      padding: 20px 0;
+    }
+
+    .polaroid-card {
+      background: #fff;
+      padding: 16px 16px 24px 16px;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      transform: rotate(var(--rotation, 0deg));
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .polaroid-card:hover {
+      transform: scale(1.08) rotate(0deg) translateY(-12px);
+      z-index: 10;
+      box-shadow: 0 25px 45px rgba(5, 85, 92, 0.18);
+    }
+
+    /* Tape overlay effect */
+    .tape {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(var(--tape-rot, -3deg));
+      width: 100px;
+      height: 28px;
+      background: rgba(253, 254, 255, 0.65);
+      border-left: 1px dashed rgba(0, 0, 0, 0.08);
+      border-right: 1px dashed rgba(0, 0, 0, 0.08);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .polaroid-card:hover .tape {
+      background: rgba(253, 254, 255, 0.85);
+      transform: translateX(-50%) rotate(0deg) scaleY(1.05);
+    }
+
+    .polaroid-img {
+      width: 100%;
+      height: 210px;
+      overflow: hidden;
+      border: 1px solid #f1f5f9;
+      background: #f8fafc;
+      position: relative;
+    }
+
+    .polaroid-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .category-tag {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      padding: 4px 10px;
+      background: rgba(5, 85, 92, 0.9);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-radius: 4px;
+    }
+
+    .polaroid-caption {
+      width: 100%;
+      margin-top: 18px;
+      text-align: center;
+    }
+
+    .polaroid-caption h3 {
+      font-family: 'Caveat', cursive;
+      font-size: 1.9rem;
+      color: #05555c;
+      margin-bottom: 4px;
+      line-height: 1.1;
+    }
+
+    .role-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      background: rgba(5, 85, 92, 0.06);
+      color: #05555c;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    /* Expandable Description */
+    .polaroid-desc {
+      font-size: 0.85rem;
+      color: #64748b;
+      line-height: 1.5;
+      padding: 0 5px;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.3s ease-out;
+    }
+
+    .polaroid-card:hover .polaroid-desc {
+      max-height: 100px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      margin-top: auto;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: #5f7478;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.3rem;
+      }
+      .scrapbook-board {
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation button back to root portfolio -->
+  <a href="../../index_responsive.html#act" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+  </a>
+
+  <div class="container">
+    <header>
+      <h1>Events & Awards Scrapbook</h1>
+      <p>A personal visual timeline capturing highlights from hosting stages, coordinating startup competitions, and volunteering in community awareness camps.</p>
+    </header>
+
+    <!-- Filters Row -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Memories</button>
+      <button class="filter-btn" data-filter="hosting">Hosting & Speaking</button>
+      <button class="filter-btn" data-filter="tech">Hackathons & Tech</button>
+      <button class="filter-btn" data-filter="social">Social & Cultural</button>
+    </div>
+
+    <!-- Polaroid Scrapbook Board -->
+    <div class="scrapbook-board" id="scrapbook-board">
+      
+      <!-- Photo 1: Gandhi Jayanti -->
+      <div class="polaroid-card" data-category="hosting" style="--rotation: -2deg; --tape-rot: 3deg;">
+        <div class="tape"></div>
+        <div class="polaroid-img">
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80" alt="Gandhi Jayanti Host">
+          <span class="category-tag">Hosting</span>
+        </div>
+        <div class="polaroid-caption">
+          <h3>Gandhi Jayanti Event Host</h3>
+          <span class="role-badge">Lead Anchor</span>
+          <p class="polaroid-desc">Acted as the main stage host and event coordinator, managing guest welcoming schedules and hosting student presentations.</p>
+        </div>
+      </div>
+
+      <!-- Photo 2: Smart Automation -->
+      <div class="polaroid-card" data-category="tech" style="--rotation: 3deg; --tape-rot: -2deg;">
+        <div class="tape"></div>
+        <div class="polaroid-img">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Smart Automation Winner">
+          <span class="category-tag">Tech</span>
+        </div>
+        <div class="polaroid-caption">
+          <h3>Smart Automation Winner</h3>
+          <span class="role-badge">🥇 1st Place - TecXposium24</span>
+          <p class="polaroid-desc">Won the top award for building and presenting a sensor-driven microcontroller watering module for irrigation conservation.</p>
+        </div>
+      </div>
+
+      <!-- Photo 3: NSS Social Campaigns -->
+      <div class="polaroid-card" data-category="social" style="--rotation: -1deg; --tape-rot: 2deg;">
+        <div class="tape"></div>
+        <div class="polaroid-img">
+          <img src="https://images.unsplash.com/photo-1559027615-cd44889d996f?auto=format&fit=crop&w=600&q=80" alt="NSS Coordination">
+          <span class="category-tag">Social</span>
+        </div>
+        <div class="polaroid-caption">
+          <h3>NSS Day Coordinator</h3>
+          <span class="role-badge">NSS Treasurer</span>
+          <p class="polaroid-desc">Organized blood donation camps, clean energy drives, and led student volunteer scheduling for tree planting campaigns.</p>
+        </div>
+      </div>
+
+      <!-- Photo 4: Startup Pitch -->
+      <div class="polaroid-card" data-category="tech" style="--rotation: 2deg; --tape-rot: -3deg;">
+        <div class="tape"></div>
+        <div class="polaroid-img">
+          <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80" alt="Startup Presentation">
+          <span class="category-tag">Tech</span>
+        </div>
+        <div class="polaroid-caption">
+          <h3>Startup Competition Pitch</h3>
+          <span class="role-badge">🥈 Runner Up</span>
+          <p class="polaroid-desc">Pitched the rural startup business project *NayaVyapar* for makhana distribution to jury panels and industrial mentors.</p>
+        </div>
+      </div>
+
+      <!-- Photo 5: Debate Panel -->
+      <div class="polaroid-card" data-category="hosting" style="--rotation: -3deg; --tape-rot: 4deg;">
+        <div class="tape"></div>
+        <div class="polaroid-img">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="Technical Debates Anchor">
+          <span class="category-tag">Hosting</span>
+        </div>
+        <div class="polaroid-caption">
+          <h3>Tech Debates Panel Head</h3>
+          <span class="role-badge">Technical Event Head</span>
+          <p class="polaroid-desc">Coordinated panel structures, coding rounds, and debate timelines for CSE students during college festival weeks.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Pramveer Kumar | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.polaroid-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle active button class
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Apply filtering
+        const filterValue = btn.getAttribute('data-filter');
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filterValue === 'all' || filterValue === category) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

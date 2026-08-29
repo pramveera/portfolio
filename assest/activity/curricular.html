@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extracurriculars & Leadership | Pramveer</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #c3ecf7 0%, #fcd5ce 100%);
+      color: #334155;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+      color: #05555c;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      align-self: flex-start;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(5, 85, 92, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #05555c;
+      color: white;
+      transform: translateX(-3px);
+      box-shadow: 0 6px 20px rgba(5, 85, 92, 0.15);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      color: #5f7478;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 50px;
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section h2 i {
+      font-size: 1.6rem;
+    }
+
+    /* Leadership Cards Layout */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .leadership-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(5, 85, 92, 0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .leadership-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(5, 85, 92, 0.1);
+    }
+
+    .leadership-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(5, 85, 92, 0.08);
+      color: #05555c;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.4rem;
+    }
+
+    .leadership-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #05555c;
+    }
+
+    .leadership-description {
+      font-size: 0.95rem;
+      color: #5f7478;
+      line-height: 1.6;
+      border-left: 3px solid #05555c;
+      padding-left: 12px;
+    }
+
+    /* Competitions Layout */
+    .competition-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .competition-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(5, 85, 92, 0.04);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .competition-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .comp-img-wrapper {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .comp-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .comp-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 6px 12px;
+      background: #05555c;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .comp-info {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .comp-info h4 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 10px;
+    }
+
+    .comp-info p {
+      font-size: 0.95rem;
+      color: #5f7478;
+      line-height: 1.6;
+    }
+
+    /* Certificates Grid Layout */
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .cert-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(5, 85, 92, 0.04);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .cert-img-wrapper {
+      width: 100%;
+      height: 160px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 15px;
+      border: 1px solid #f1f5f9;
+    }
+
+    .cert-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cert-card h4 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 6px;
+    }
+
+    .cert-card p {
+      font-size: 0.85rem;
+      color: #5f7478;
+      margin-bottom: 15px;
+      flex: 1;
+    }
+
+    .cert-link {
+      display: inline-block;
+      padding: 8px 18px;
+      background: #05555c;
+      color: white;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(5, 85, 92, 0.1);
+      transition: background 0.3s ease;
+    }
+
+    .cert-link:hover {
+      background: #044449;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      margin-top: auto;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: #5f7478;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .leadership-grid, .competition-grid, .certificates-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation button back to root portfolio -->
+  <a href="../../index_responsive.html#act" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+  </a>
+
+  <div class="container">
+    <header>
+      <h1>Extracurriculars & Leadership</h1>
+      <p>My contributions toward student leadership, event hosting, and hackathon campaigns to drive innovation and support startup awareness.</p>
+    </header>
+
+    <!-- Leadership Section -->
+    <div class="section">
+      <h2><i class="fa-solid fa-users"></i> Leadership & Roles</h2>
+      <div class="leadership-grid">
+        
+        <!-- Role 1 -->
+        <div class="leadership-card">
+          <div class="leadership-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <div class="leadership-title">Class Representative – CSE (AI)</div>
+          <div class="leadership-description">Acting as the bridge between students and faculty, coordinating academic calendars, and representing the AI branch (2023–Present).</div>
+        </div>
+
+        <!-- Role 2 -->
+        <div class="leadership-card">
+          <div class="leadership-icon"><i class="fa-solid fa-piggy-bank"></i></div>
+          <div class="leadership-title">Treasurer – NSS Club</div>
+          <div class="leadership-description">Managed finances, event budgeting allocations, and financial records for NSS campus activities and social campaigns (2023–Present).</div>
+        </div>
+
+        <!-- Role 3 -->
+        <div class="leadership-card">
+          <div class="leadership-icon"><i class="fa-solid fa-microphone"></i></div>
+          <div class="leadership-title">Event Host & Coordinator</div>
+          <div class="leadership-description">Hosted and managed multiple events such as Gandhi Jayanti, TechFest, and painting competitions, demonstrating coordination skills.</div>
+        </div>
+
+        <!-- Role 4 -->
+        <div class="leadership-card">
+          <div class="leadership-icon"><i class="fa-solid fa-rocket"></i></div>
+          <div class="leadership-title">Startup Contributor – Nayavayapar</div>
+          <div class="leadership-description">Contributing to a rural startup focused on makhana production, responsible for social media content strategy and brand engagement.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Competitions Section -->
+    <div class="section">
+      <h2><i class="fa-solid fa-trophy"></i> Competitions</h2>
+      <div class="competition-grid">
+        
+        <!-- Win 1 -->
+        <div class="competition-card">
+          <div class="comp-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Smart Automation">
+            <span class="comp-badge">🥇 Winner – 2024</span>
+          </div>
+          <div class="comp-info">
+            <h4>Smart Automation – TecXposium24</h4>
+            <p>Developed a Smart Watering System using Arduino microcontrollers and soil sensors; recognized as the best innovation among 30+ project entries.</p>
+          </div>
+        </div>
+
+        <!-- Win 2 -->
+        <div class="competition-card">
+          <div class="comp-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=600&q=80" alt="Startup Competition">
+            <span class="comp-badge">🥈 Runner Up – 2024</span>
+          </div>
+          <div class="comp-info">
+            <h4>Inter-College Startup Competition</h4>
+            <p>Presented a rural startup idea for makhana distribution, digital branding, and farming tech-enablement, appreciated by industrial jury panels.</p>
+          </div>
+        </div>
+
+        <!-- Win 3 -->
+        <div class="competition-card">
+          <div class="comp-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Hackathon">
+            <span class="comp-badge">✅ Participant – 2025</span>
+          </div>
+          <div class="comp-info">
+            <h4>State Hackathon – Rural Development</h4>
+            <p>Proposed tech-based solutions for smart village infrastructure and internet-based access to education in rural locations.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Certificates Section -->
+    <div class="section">
+      <h2><i class="fa-solid fa-scroll"></i> Certificates</h2>
+      <div class="certificates-grid">
+        
+        <!-- Cert 1 -->
+        <div class="cert-card">
+          <div class="cert-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1589330694653-ded6df53f7ec?auto=format&fit=crop&w=600&q=80" alt="Smart Automation Certificate">
+          </div>
+          <h4>Smart Automation Win</h4>
+          <p>🥇 Winner – TecXposium24</p>
+          <a href="#" class="cert-link">View Certificate</a>
+        </div>
+
+        <!-- Cert 2 -->
+        <div class="cert-card">
+          <div class="cert-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1496469888073-80de7e9b9aae?auto=format&fit=crop&w=600&q=80" alt="Startup Competition Certificate">
+          </div>
+          <h4>Startup Competition</h4>
+          <p>🥈 Runner Up – 2024</p>
+          <a href="#" class="cert-link">View Certificate</a>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="cert-card">
+          <div class="cert-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80" alt="Event Hosting Certificate">
+          </div>
+          <h4>Event Hosting</h4>
+          <p>Appreciation – Gandhi Jayanti 2023</p>
+          <a href="#" class="cert-link">View Certificate</a>
+        </div>
+
+        <!-- Cert 4 -->
+        <div class="cert-card">
+          <div class="cert-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1559027615-cd44889d996f?auto=format&fit=crop&w=600&q=80" alt="NSS Day Certificate">
+          </div>
+          <h4>NSS Day Coordination</h4>
+          <p>Appreciation Award – 2023</p>
+          <a href="#" class="cert-link">View Certificate</a>
+        </div>
+
+        <!-- Cert 5 -->
+        <div class="cert-card">
+          <div class="cert-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="Hackathon Certificate">
+          </div>
+          <h4>Hackathon – Rural Dev.</h4>
+          <p>Participant Certificate – 2025</p>
+          <a href="#" class="cert-link">View Certificate</a>
+        </div>
+
+        <!-- Cert 6 -->
+        <div class="cert-card">
+          <div class="cert-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Volunteer Certificate">
+          </div>
+          <h4>Tree Plantation Drive</h4>
+          <p>Volunteer Appreciation – 2024</p>
+          <a href="#" class="cert-link">View Certificate</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Pramveer Kumar | All Rights Reserved</p>
+  </footer>
+</body>
+</html>

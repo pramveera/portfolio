@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Licences & Certifications | Pramveer</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #c3ecf7 0%, #fcd5ce 100%);
+      color: #334155;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+      color: #05555c;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      align-self: flex-start;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(5, 85, 92, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #05555c;
+      color: white;
+      transform: translateX(-3px);
+      box-shadow: 0 6px 20px rgba(5, 85, 92, 0.15);
+    }
+
+    /* Showcase Layout */
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      color: #5f7478;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Filters Bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 10px 22px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: #64748b;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      outline: none;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: #05555c;
+    }
+
+    .filter-btn.active {
+      background: #05555c;
+      color: white;
+      border-color: #05555c;
+      box-shadow: 0 4px 15px rgba(5, 85, 92, 0.15);
+    }
+
+    /* Portfolio Cards Grid */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .showcase-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(5, 85, 92, 0.04);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(5, 85, 92, 0.1);
+    }
+
+    .card-img-wrapper {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: #e2e8f0;
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .showcase-card:hover .card-img-wrapper img {
+      transform: scale(1.06);
+    }
+
+    .category-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 6px 14px;
+      background: rgba(5, 85, 92, 0.95);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+    }
+
+    .card-info {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .org-badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 4px 10px;
+      background: rgba(5, 85, 92, 0.1);
+      color: #05555c;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .card-info h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #05555c;
+      margin-bottom: 8px;
+      letter-spacing: -0.2px;
+    }
+
+    .card-info p {
+      font-size: 0.95rem;
+      color: #5f7478;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #05555c;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: gap 0.2s ease;
+    }
+
+    .card-action:hover {
+      gap: 10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      margin-top: auto;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: #5f7478;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+      }
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation button back to root portfolio -->
+  <a href="../../index_responsive.html#act" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+  </a>
+
+  <div class="container">
+    <header>
+      <h1>Licences & Certifications</h1>
+      <p>A compilation of professional credentials, verified technical training courses, and competition achievements earned during my academic journey.</p>
+    </header>
+
+    <!-- Filters Row -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All Credentials</button>
+      <button class="filter-btn" data-filter="internship">Internships</button>
+      <button class="filter-btn" data-filter="competition">Competitions</button>
+      <button class="filter-btn" data-filter="technical">Technical Courses</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="showcase-grid" id="showcase-grid">
+      
+      <!-- Card 1: Web Development Internship -->
+      <div class="showcase-card" data-category="internship">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1589330694653-ded6df53f7ec?auto=format&fit=crop&w=600&q=80" alt="Web Development Internship">
+          <span class="category-badge">Internship</span>
+        </div>
+        <div class="card-info">
+          <span class="org-badge">Codshoft Pvt. Ltd.</span>
+          <h3>Web Development Internship</h3>
+          <p>Successfully completed a 1-month intensive internship on frontend development using HTML, CSS, JavaScript, and React components.</p>
+          <a href="#" class="card-action">View Certificate <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 2: Startup Cell Runner Up -->
+      <div class="showcase-card" data-category="competition">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1496469888073-80de7e9b9aae?auto=format&fit=crop&w=600&q=80" alt="Startup Award">
+          <span class="category-badge">Competition</span>
+        </div>
+        <div class="card-info">
+          <span class="org-badge">Startup Cell, SCE Supaul</span>
+          <h3>Startup Competition - Runner Up</h3>
+          <p>Secured the runner-up position for the 'NayaVyapar' makhana distribution project pitch in the inter-college startup competition at SCE Supaul.</p>
+          <a href="#" class="card-action">View Certificate <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 3: IDE Bootcamp Participant -->
+      <div class="showcase-card" data-category="competition">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="IDE Bootcamp">
+          <span class="category-badge">Competition</span>
+        </div>
+        <div class="card-info">
+          <span class="org-badge">CIMP Patna</span>
+          <h3>IDE Bootcamp Participant</h3>
+          <p>Participated in the 3-day intensive IDE Bootcamp focused on business model creation, startup ideation, and rural innovation development.</p>
+          <a href="#" class="card-action">View Certificate <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 4: AWS Cloud Foundation -->
+      <div class="showcase-card" data-category="technical">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="AWS Cloud Certificate">
+          <span class="category-badge">Technical</span>
+        </div>
+        <div class="card-info">
+          <span class="org-badge">ICT Academy</span>
+          <h3>AWS Cloud Foundation</h3>
+          <p>Completed the AWS Cloud Foundation training covering cloud infrastructure, architecture concepts, core security, and AWS compute services.</p>
+          <a href="#" class="card-action">View Certificate <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 5: Digital Marketing Certificate -->
+      <div class="showcase-card" data-category="technical">
+        <div class="card-img-wrapper">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=600&q=80" alt="Digital Marketing Certificate">
+          <span class="category-badge">Technical</span>
+        </div>
+        <div class="card-info">
+          <span class="org-badge">Learnyst</span>
+          <h3>Digital Marketing Certificate</h3>
+          <p>Certified in digital marketing principles covering brand building, social media strategies, SEO, and paid ad management.</p>
+          <a href="#" class="card-action">View Certificate <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Pramveer Kumar | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.showcase-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle active button class
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Apply grid filtering
+        const filterValue = btn.getAttribute('data-filter');
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filterValue === 'all' || filterValue === category) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

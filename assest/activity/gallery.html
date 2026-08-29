@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery & Memories | Pramveer</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #c3ecf7 0%, #fcd5ce 100%);
+      color: #334155;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 30px;
+      color: #05555c;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      align-self: flex-start;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(5, 85, 92, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #05555c;
+      color: white;
+      transform: translateX(-3px);
+      box-shadow: 0 6px 20px rgba(5, 85, 92, 0.15);
+    }
+
+    /* Showcase Layout */
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      color: #5f7478;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Pinterest Masonry Gallery Grid */
+    .masonry-gallery {
+      column-count: 3;
+      column-gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 24px;
+      position: relative;
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(5, 85, 92, 0.04);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(5, 85, 92, 0.1);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Info overlay appearing on hover */
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(5, 85, 92, 0.9) 0%, rgba(5, 85, 92, 0.2) 70%, rgba(5, 85, 92, 0) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 2;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-overlay h3 {
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .gallery-overlay p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+
+    .lightbox.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-content {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lightbox.show .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2.2rem;
+      color: white;
+      cursor: pointer;
+      z-index: 110;
+      transition: transform 0.2s;
+    }
+
+    .lightbox-close:hover {
+      transform: scale(1.1);
+    }
+
+    .lightbox-img-wrapper {
+      width: 100%;
+      max-height: 480px;
+      overflow: hidden;
+      background: #0f172a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-img-wrapper img {
+      max-width: 100%;
+      max-height: 480px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-info {
+      padding: 25px 30px;
+    }
+
+    .lightbox-info h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #05555c;
+      margin-bottom: 10px;
+    }
+
+    .lightbox-info p {
+      font-size: 0.95rem;
+      color: #5f7478;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      margin-top: auto;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: #5f7478;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .masonry-gallery {
+        column-count: 2;
+        column-gap: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      .masonry-gallery {
+        column-count: 1;
+        column-gap: 0;
+      }
+      .gallery-item {
+        margin-bottom: 20px;
+      }
+      .lightbox-info {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation button back to root portfolio -->
+  <a href="../../index_responsive.html#act" class="back-btn">
+    <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+  </a>
+
+  <div class="container">
+    <header>
+      <h1>Gallery & Memories</h1>
+      <p>Visual highlights, team events, and snapshots from my student life and leadership journey. Click on any photo to zoom in.</p>
+    </header>
+
+    <!-- Pinterest Masonry Gallery Grid -->
+    <div class="masonry-gallery">
+      
+      <!-- Item 1 -->
+      <div class="gallery-item" 
+           data-title="🥇 Smart Automation Champions" 
+           data-desc="Our team celebrating the first-place win at TecXposium24 for the microcontroller automated watering irrigation system.">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Smart Automation Team">
+        <div class="gallery-overlay">
+          <h3>Smart Automation Champions</h3>
+          <p>Click to view memory details</p>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="gallery-item" 
+           data-title="🌾 Nayavayapar Field Research" 
+           data-desc="Surveying agricultural fields and meeting makhana farmers to map out rural startup digital platforms and logistics.">
+        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&h=800&q=80" alt="Rural Fieldwork">
+        <div class="gallery-overlay">
+          <h3>Nayavayapar Field Research</h3>
+          <p>Click to view memory details</p>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="gallery-item" 
+           data-title="🌲 NSS Tree Plantation Campaign" 
+           data-desc="NSS volunteers planting saplings around the Supaul College campus as part of our regular environment awareness projects.">
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Tree Plantation">
+        <div class="gallery-overlay">
+          <h3>NSS Tree Plantation Campaign</h3>
+          <p>Click to view memory details</p>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="gallery-item" 
+           data-title="🎭 Gandhi Jayanti Coordinators" 
+           data-desc="Hosting the stage events, guiding debate rounds, and organizing presentation schedules for Gandhi Jayanti celebrations.">
+        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&h=450&q=80" alt="Gandhi Jayanti Stage Host">
+        <div class="gallery-overlay">
+          <h3>Gandhi Jayanti Coordinators</h3>
+          <p>Click to view memory details</p>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="gallery-item" 
+           data-title="💻 Hackathon Collaboration Sprints" 
+           data-desc="Late-night planning sessions, drafting wireframes, and coding real-time dashboard data panels with the development group.">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="Hackathon Preparation">
+        <div class="gallery-overlay">
+          <h3>Hackathon Collaboration Sprints</h3>
+          <p>Click to view memory details</p>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="gallery-item" 
+           data-title="🎓 SCE Campus Life" 
+           data-desc="Peer study circles, classroom lectures, and group projects at the Supaul College of Engineering computer lab.">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=600&h=750&q=80" alt="Academic Mentoring">
+        <div class="gallery-overlay">
+          <h3>SCE Campus Life</h3>
+          <p>Click to view memory details</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div class="lightbox-close" id="lightboxClose" style="display: none;">&times;</div>
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <div class="lightbox-img-wrapper">
+        <img src="" id="lightboxImg" alt="Zoomed Photo">
+      </div>
+      <div class="lightbox-info">
+        <h3 id="lightboxTitle">Memory Title</h3>
+        <p id="lightboxDesc">Memory description paragraph.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Pramveer Kumar | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.gallery-item');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxDesc = document.getElementById('lightboxDesc');
+
+      items.forEach(item => {
+        item.addEventListener('click', () => {
+          const imgSrc = item.querySelector('img').src;
+          const title = item.getAttribute('data-title');
+          const desc = item.getAttribute('data-desc');
+
+          lightboxImg.src = imgSrc;
+          lightboxTitle.textContent = title;
+          lightboxDesc.textContent = desc;
+
+          lightbox.classList.add('show');
+          lightboxClose.style.display = 'block';
+          document.body.style.overflow = 'hidden'; // stop page scrolling
+        });
+      });
+
+      function closeLightbox() {
+        lightbox.classList.remove('show');
+        lightboxClose.style.display = 'none';
+        document.body.style.overflow = ''; // restore scrolling
+      }
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
