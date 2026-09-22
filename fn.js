@@ -227,19 +227,75 @@ function showContent(id) {
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
   const transitDatabase = {
+    "edunet": {
+      title: "Artificial Intelligence Intern",
+      org: "Edunet Foundation × AICTE",
+      line: "blue",
+      date: "May 11, 2026 - June 21, 2026",
+      classification: "Artificial Intelligence & Machine Learning",
+      track: "AICTE Internship",
+      coreTech: "Python, NumPy, Pandas, Scikit-Learn, Supervised Learning, Model Evaluation",
+      desc: "<ul><li>Completed an intensive 6-week technical internship in Artificial Intelligence in collaboration with the All India Council for Technical Education (AICTE), implemented by Edunet Foundation.</li><li>Gained hands-on exposure to practical AI/ML workflows, working through structured modules in exploratory data analysis (EDA), data cleaning, and feature engineering.</li><li>Engineered and validated predictive machine learning models using Python, Scikit-learn, and Pandas, evaluating model accuracy with confusion matrices and classification metrics.</li><li>Explored foundational neural networks, computer vision, and natural language processing concepts for practical real-world problem-solving.</li></ul>"
+    },
+    "cisco": {
+      title: "Networking Virtual Intern",
+      org: "Cisco",
+      line: "blue",
+      date: "June 2025 - August 2025",
+      classification: "Computer Networking & Infrastructure",
+      track: "Cisco Networking Academy",
+      coreTech: "Cisco Packet Tracer, TCP/IP & OSI Models, IPv4/IPv6 Subnetting, Routing & Switching",
+      desc: "<ul><li>Completed the Virtual Internship Program 2025 in Networking held under the Cisco Networking Academy.</li><li>Developed an in-depth understanding of networking fundamentals, protocols, transmission media, and device architectures across the OSI and TCP/IP stacks.</li><li>Configured and simulated enterprise network topologies, switches, routers, and IP addressing schemes using Cisco Packet Tracer.</li><li>Conducted practical diagnostic troubleshooting, packet inspection, and network security exercises in virtual laboratory environments.</li></ul>"
+    },
     "nayavayapar": {
       title: "Frontend Developer",
       org: "Nayavayapar",
       line: "blue",
-      date: "May 2025 - Present",
-      desc: "<ul><li>Building and optimizing the startup's online platform.</li><li>Translating business goals into modern, visual-first front-end code.</li><li>Spearheading branding and digital identity to promote regional farmer products.</li></ul>"
+      date: "May 2025 - July 2025",
+      classification: "Frontend Web Engineering",
+      track: "Startup Technology Platform",
+      coreTech: "HTML5, CSS3, JavaScript, Responsive Web Design, Asset Optimization, UI/UX",
+      desc: "<ul><li>Built and optimized the startup's online platform, translating business goals into modern, visual-first front-end solutions.</li><li>Implemented responsive layouts and mobile-first interface components ensuring cross-device compatibility and smooth navigation.</li><li>Spearheaded digital branding and e-commerce presentation to promote regional farmer products and uplift rural market outreach.</li><li>Optimized front-end performance, asset delivery, and interactive web elements to improve user retention and engagement.</li></ul>"
     },
-    "ide-bootcamp": {
-      title: "IDE Bootcamp Edition-2",
-      org: "AICTE & MIC",
+    "ide_bootcamp": {
+      title: "IDE Bootcamp Participant",
+      org: "IDE Bootcamp",
       line: "blue",
-      date: "Feb 2025",
-      desc: "<ul><li>Deep dived into design thinking methodologies to validate business ideas.</li><li>Formulated comprehensive business models and pitching strategies.</li><li>Collaborated with diverse teams on real-world socio-economic problem statements.</li></ul>"
+      date: "2025",
+      classification: "Innovation & Entrepreneurship",
+      track: "AICTE & MoE Innovation Cell",
+      coreTech: "Design Thinking, Business Model Canvas (BMC), Market Validation, Pitch Decks",
+      desc: "<ul><li>Participated in an intensive Innovation, Design and Entrepreneurship (IDE) Bootcamp organized by AICTE and Ministry of Education's Innovation Cell (MIC).</li><li>Explored design thinking methodologies to validate startup ideas, identify critical socio-economic problem statements, and interview target demographics.</li><li>Formulated comprehensive Business Model Canvases (BMC), value proposition frameworks, and competitive go-to-market strategies.</li><li>Collaborated with multidisciplinary teams to pitch viable, tech-enabled startup models to industry mentors and incubator leads.</li></ul>"
+    },
+    "isro": {
+      title: "AIML for Geodata Analysis",
+      org: "ISRO & IIRS, Dehradun",
+      line: "blue",
+      date: "1 Week Training",
+      classification: "Geospatial AI & Remote Sensing",
+      track: "ISRO & IIRS Training",
+      coreTech: "Remote Sensing Data, Satellite Imagery, GIS Principles, Machine Learning Classification",
+      desc: "<ul><li>Completed a specialized one-week training program on Artificial Intelligence and Machine Learning for Geodata Analysis conducted by ISRO and IIRS, Dehradun.</li><li>Gained hands-on exposure to geospatial data structures, remote-sensing physics, coordinate reference systems, and satellite imagery analysis.</li><li>Studied the application of machine learning classification and clustering algorithms to multispectral earth observation datasets.</li><li>Developed an understanding of automated spatial feature extraction and predictive modeling for environmental and agricultural monitoring.</li></ul>"
+    },
+    "goldman_sachs": {
+      title: "Virtual Experience Participant",
+      org: "Goldman Sachs — Forage",
+      line: "blue",
+      date: "Virtual Experience",
+      classification: "Enterprise Software Engineering",
+      track: "Financial Technology",
+      coreTech: "Software Engineering, Cryptography, Financial Data Modeling, Git Workflows",
+      desc: "<ul><li>Completed the Goldman Sachs Software Engineering virtual experience program through the Forage platform.</li><li>Worked through practical tasks designed to simulate engineering workflows at a global investment bank.</li><li>Solved real-world challenges in system architecture, cryptographic decryption, password hashing, and secure financial transaction processing.</li><li>Gained practical knowledge of enterprise-grade software standards, data manipulation, and software development lifecycles.</li></ul>"
+    },
+    "codsoft": {
+      title: "Web Development Intern",
+      org: "CodSoft",
+      line: "blue",
+      date: "Internship",
+      classification: "Web Application Development",
+      track: "Frontend Engineering",
+      coreTech: "Vanilla JavaScript, HTML5, CSS3, DOM Manipulation, Responsive UI, Git",
+      desc: "<ul><li>Worked on web development projects using modern front-end technologies during a 1-month intensive virtual internship.</li><li>Developed responsive, user-friendly, and accessible web interfaces ensuring high performance across devices and browsers.</li><li>Applied semantic HTML5, modern CSS3 layout systems (Flexbox & Grid), and vanilla JavaScript to build interactive web projects.</li><li>Utilized Git and GitHub for version control, code structure maintenance, and collaborative code reviews.</li></ul>"
     },
     "ieee-vice-chair": {
       title: "Vice Chair - IEEE SB",
@@ -247,13 +303,6 @@ document.addEventListener('DOMContentLoaded', () => {
       line: "magenta",
       date: "2024",
       desc: "<ul><li>Orchestrated regional workshops on web development and AI foundations.</li><li>Fostered collaborations with guest lecturers and other student bodies.</li><li>Expanded branch membership by 20%+ via structured outreach programs.</li></ul>"
-    },
-    "goldman-sachs": {
-      title: "Software Engineering Program",
-      org: "Goldman Sachs (Forage)",
-      line: "blue",
-      date: "Oct 2024",
-      desc: "<ul><li>Engaged in resolving system modeling issues and structural coding challenges.</li><li>Analyzed financial transactions and wrote code for data manipulation.</li><li>Gained practical knowledge of engineering workflows at a global investment bank.</li></ul>"
     },
     "college-magazine": {
       title: "Magazine Design & Promotion",
@@ -275,13 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
       line: "magenta",
       date: "Sept 2024",
       desc: "<ul><li>Designed problem sets and rules for peer programming challenges.</li><li>Taught foundational data structures and algorithm concepts to first-year students.</li><li>Hosted interactive web design hackathons on campus.</li></ul>"
-    },
-    "web-dev-intern": {
-      title: "Web Developer Intern",
-      org: "Codshoft",
-      line: "blue",
-      date: "Aug 2024",
-      desc: "<ul><li>Implemented fully responsive landing pages and interfaces.</li><li>Created neat, production-ready vanilla JavaScript components.</li><li>Collaborated on visual polishing and structural elements.</li></ul>"
     },
     "iic-coordinator": {
       title: "Internship Coordinator",
@@ -367,14 +409,35 @@ document.addEventListener('DOMContentLoaded', () => {
       detailsPane.classList.add('switching');
 
       setTimeout(() => {
+        const hasMeta = !!(data.classification || data.coreTech);
+        let metaHtml = '';
+        if (hasMeta) {
+          metaHtml = `
+            <div class="details-heading-meta ${activePath}">
+              ${data.classification ? `
+                <div class="meta-line">
+                  <span class="meta-label">Classification:</span> <span class="meta-val">${data.classification}</span>
+                  ${data.track ? `<span class="meta-sep">|</span> <span class="meta-label">Track:</span> <span class="meta-val">${data.track}</span>` : ''}
+                </div>
+              ` : ''}
+              ${data.coreTech ? `
+                <div class="meta-line">
+                  <span class="meta-label">Core Tech:</span> <span class="meta-val meta-tech">${data.coreTech}</span>
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }
+
         detailsPane.innerHTML = `
-          <div class="details-header">
+          <div class="details-header ${hasMeta ? 'has-meta' : ''}">
             <div class="details-title">
               <h3>${data.title}</h3>
               <span class="details-org ${activePath}">${data.org}</span>
             </div>
             <span class="details-date ${activePath}">${data.date}</span>
           </div>
+          ${metaHtml}
           <div class="details-body">
             ${data.desc}
           </div>
@@ -418,17 +481,38 @@ document.addEventListener('DOMContentLoaded', () => {
         .map(([id, data]) => data);
         
       blueItems.forEach(item => {
+        const hasMeta = !!(item.classification || item.coreTech);
+        let metaHtml = '';
+        if (hasMeta) {
+          metaHtml = `
+            <div class="modal-timeline-meta blue">
+              ${item.classification ? `
+                <div class="meta-line">
+                  <span class="meta-label">Classification:</span> <span class="meta-val">${item.classification}</span>
+                  ${item.track ? `<span class="meta-sep">|</span> <span class="meta-label">Track:</span> <span class="meta-val">${item.track}</span>` : ''}
+                </div>
+              ` : ''}
+              ${item.coreTech ? `
+                <div class="meta-line">
+                  <span class="meta-label">Core Tech:</span> <span class="meta-val meta-tech">${item.coreTech}</span>
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }
+
         html += `
           <div class="modal-timeline-item">
             <span class="modal-timeline-node blue"></span>
             <div class="modal-timeline-card">
-              <div class="modal-timeline-header">
+              <div class="modal-timeline-header ${hasMeta ? 'has-meta' : ''}">
                 <div class="modal-timeline-title">
                   <h4>${item.title}</h4>
                   <span class="modal-timeline-org blue">${item.org}</span>
                 </div>
                 <span class="modal-timeline-date">${item.date}</span>
               </div>
+              ${metaHtml}
               <div class="modal-timeline-body">${item.desc}</div>
             </div>
           </div>
@@ -442,17 +526,38 @@ document.addEventListener('DOMContentLoaded', () => {
         .map(([id, data]) => data);
         
       magentaItems.forEach(item => {
+        const hasMeta = !!(item.classification || item.coreTech);
+        let metaHtml = '';
+        if (hasMeta) {
+          metaHtml = `
+            <div class="modal-timeline-meta magenta">
+              ${item.classification ? `
+                <div class="meta-line">
+                  <span class="meta-label">Classification:</span> <span class="meta-val">${item.classification}</span>
+                  ${item.track ? `<span class="meta-sep">|</span> <span class="meta-label">Track:</span> <span class="meta-val">${item.track}</span>` : ''}
+                </div>
+              ` : ''}
+              ${item.coreTech ? `
+                <div class="meta-line">
+                  <span class="meta-label">Core Tech:</span> <span class="meta-val meta-tech">${item.coreTech}</span>
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }
+
         html += `
           <div class="modal-timeline-item">
             <span class="modal-timeline-node magenta"></span>
             <div class="modal-timeline-card">
-              <div class="modal-timeline-header">
+              <div class="modal-timeline-header ${hasMeta ? 'has-meta' : ''}">
                 <div class="modal-timeline-title">
                   <h4>${item.title}</h4>
                   <span class="modal-timeline-org magenta">${item.org}</span>
                 </div>
                 <span class="modal-timeline-date">${item.date}</span>
               </div>
+              ${metaHtml}
               <div class="modal-timeline-body">${item.desc}</div>
             </div>
           </div>
@@ -496,11 +601,16 @@ document.addEventListener('DOMContentLoaded', () => {
     <p>Certified in <strong>AIML for Geodata Analysis by ISRO</strong> and a participant in the <strong>Goldman Sachs Software Engineering Virtual Experience (Forage)</strong>, I continuously enhance my skills through real-world projects, competitive programming, and research. My goal is to build impactful AI solutions that solve real-world challenges in agriculture, finance, healthcare, and intelligent automation.</p>
   `,
 
- ventures: `
-  <p>I enjoy building <strong>Data Science and Machine Learning projects</strong> that solve practical problems. My experience includes developing predictive models, performing exploratory data analysis (EDA), feature engineering, and creating interactive dashboards using <strong>Python, Pandas, NumPy, Scikit-learn, TensorFlow, SQL, and Matplotlib</strong>.</p>
-
-  <p>Some of my projects include <strong>Gold Price Prediction, Heart Disease Prediction, YouTube User Behavior Analysis</strong>, and other AI-driven applications. Through these projects, I've gained hands-on experience in data cleaning, model training, evaluation, and visualization while following industry-standard machine learning workflows.</p>
-`,
+  ventures: `
+    <p>I focus on transforming technical concepts into impactful, practical solutions across <strong>Data Science, Machine Learning, and Web Systems</strong>:</p>
+    <ul style="margin: 8px 0 12px 18px; padding: 0; line-height: 1.65; color: #475569;">
+      <li><strong>AI &amp; Machine Learning:</strong> 6-Week AICTE internship with Edunet Foundation, plus specialized AIML for Geodata Analysis training with ISRO &amp; IIRS Dehradun.</li>
+      <li><strong>Networking &amp; Infrastructure:</strong> Cisco Networking Academy Virtual Internship covering enterprise routing, switching, and Packet Tracer network simulations.</li>
+      <li><strong>Software &amp; Web Engineering:</strong> Frontend development with rural startup Nayavayapar, Goldman Sachs Software Engineering virtual experience (Forage), and CodSoft web development.</li>
+      <li><strong>Innovation &amp; Incubation:</strong> AICTE &amp; MIC IDE Bootcamp focusing on design thinking, business model formulation, and startup ideation.</li>
+    </ul>
+    <p>Complementing my industry internships, I have engineered predictive models including <strong>Gold Price Prediction, Heart Disease Prediction, YouTube User Behavior Analysis</strong>, and regional Makhana demand forecasting using Python, Scikit-Learn, Pandas, and TensorFlow.</p>
+  `,
 
   leadership: `
     <p>As the <strong>Vice Chair of the IEEE Student Branch</strong> at Supaul College of Engineering, I have organized technical workshops, coding sessions, hackathons, and AI awareness programs, helping more than <strong>100 students</strong> strengthen their technical skills and foster innovation.</p>

@@ -1031,6 +1031,12 @@ header {
   padding-bottom: 20px;
 }
 
+.details-header.has-meta {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: -8px;
+}
+
 .details-title h3 {
   font-size: 1.5rem;
   font-weight: 800;
@@ -1068,11 +1074,59 @@ header {
   color: #ff8fab;
 }
 
+/* Fixed Heading Metadata (Classification, Track, Core Tech) */
+.details-heading-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 7px 12px;
+  background: #f8fafc;
+  border-left: 3.5px solid #05555c;
+  border-radius: 6px;
+  margin-top: 0;
+}
+
+.details-heading-meta.magenta {
+  border-left-color: #ff8fab;
+  background: #fff5f7;
+}
+
+.details-heading-meta .meta-line {
+  font-size: 0.83rem;
+  line-height: 1.45;
+  color: #334155;
+  text-align: left;
+}
+
+.details-heading-meta .meta-label {
+  font-weight: 700;
+  color: #05555c;
+}
+
+.details-heading-meta.magenta .meta-label {
+  color: #e05780;
+}
+
+.details-heading-meta .meta-val {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.details-heading-meta .meta-tech {
+  color: #475569;
+  font-weight: 500;
+}
+
+.details-heading-meta .meta-sep {
+  margin: 0 8px;
+  color: #94a3b8;
+}
+
 .details-body {
   font-size: 0.98rem;
   line-height: 1.7;
   color: #475569;
-  max-height: 220px;
+  max-height: 200px;
   overflow-y: auto;
   scroll-behavior: smooth;
   padding-right: 8px;
@@ -1897,6 +1951,12 @@ div.golu .item:hover img {
   padding-bottom: 8px;
 }
 
+.modal-timeline-header.has-meta {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 8px;
+}
+
 .modal-timeline-title h4 {
   font-size: 1.15rem;
   font-weight: 700;
@@ -1926,6 +1986,53 @@ div.golu .item:hover img {
   padding: 4px 12px;
   border-radius: 20px;
   white-space: nowrap;
+}
+
+.modal-timeline-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-left: 3px solid #05555c;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.modal-timeline-meta.magenta {
+  border-left-color: #ff8fab;
+  background: #fff5f7;
+}
+
+.modal-timeline-meta .meta-line {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #334155;
+  text-align: left;
+}
+
+.modal-timeline-meta .meta-label {
+  font-weight: 700;
+  color: #05555c;
+}
+
+.modal-timeline-meta.magenta .meta-label {
+  color: #e05780;
+}
+
+.modal-timeline-meta .meta-val {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.modal-timeline-meta .meta-tech {
+  color: #475569;
+  font-weight: 500;
+}
+
+.modal-timeline-meta .meta-sep {
+  margin: 0 8px;
+  color: #94a3b8;
 }
 
 .modal-timeline-body {
